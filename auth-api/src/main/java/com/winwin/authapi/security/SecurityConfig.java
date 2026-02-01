@@ -1,5 +1,12 @@
 package com.winwin.authapi.security;
 
+/**
+ * Spring Security Configuration.
+ * * Defines the application's security filter chain, stateless session management,
+ * and endpoint access rules. Configures the system to permit authentication
+ * routes while requiring JWT validation for all protected resources.
+ */
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

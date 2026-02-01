@@ -1,5 +1,12 @@
 package com.winwin.authapi.controller;
 
+/**
+ * Orchestration Controller for Business Logic.
+ * * Manages the "Process" workflow by validating user context, delegating data
+ * transformation to the internal Data API via RestTemplate, and persisting
+ * the transaction results to the PostgreSQL log.
+ */
+
 import com.winwin.authapi.model.ProcessingLog;
 import com.winwin.authapi.model.User;
 import com.winwin.authapi.repository.ProcessingLogRepository;

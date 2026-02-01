@@ -1,5 +1,13 @@
 package com.winwin.authapi.security;
 
+/**
+ * JWT Authentication Filter.
+ * * This filter intercepts every incoming HTTP request to validate the presence
+ * and integrity of a JWT Bearer token in the 'Authorization' header. If a
+ * valid token is found, it populates the Spring SecurityContext with the
+ * user's authentication details, enabling access to protected resources
+ * like the /api/process endpoint.
+ */
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

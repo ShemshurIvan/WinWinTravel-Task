@@ -1,5 +1,12 @@
 package com.winwin.authapi.controller;
 
+/**
+ * Authentication Entry Point.
+ * * This controller manages user identity operations, including account registration
+ * and secure login via JWT generation. It serves as the primary gateway for
+ * user-facing authentication requests.
+ */
+
 import com.winwin.authapi.model.User;
 import com.winwin.authapi.repository.UserRepository;
 import com.winwin.authapi.security.JwtUtil;
@@ -10,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/api/auth")

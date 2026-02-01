@@ -1,5 +1,12 @@
 package com.winwin.dataapi.configuration;
 
+/**
+ * Service-to-Service Security Filter.
+ * * Enforces a pre-shared secret (X-Internal-Token) security policy. This ensures
+ * that the Data API only processes requests originating from authorized
+ * internal services, effectively isolating it from the public internet.
+ */
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

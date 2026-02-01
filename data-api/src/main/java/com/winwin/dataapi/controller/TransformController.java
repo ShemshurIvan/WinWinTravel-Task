@@ -1,5 +1,13 @@
 package com.winwin.dataapi.controller;
 
+/**
+ * Internal Text Transformation API.
+ * * This controller provides the core business logic for the Data API. It
+ * processes incoming text requests by reversing the string and converting
+ * it to uppercase. Access to this controller is restricted to internal
+ * services via the InternalTokenFilter to ensure secure service-to-service
+ * communication.
+ */
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

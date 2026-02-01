@@ -1,5 +1,12 @@
 package com.winwin.authapi.security;
 
+/**
+ * JWT Lifecycle Utility.
+ * * Provides centralized logic for the creation, signing, and parsing of
+ * JSON Web Tokens. Encapsulates HMAC-SHA signing keys and expiration
+ * logic to maintain session integrity across the Auth API.
+ */
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
