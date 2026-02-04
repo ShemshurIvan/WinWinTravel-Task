@@ -7,34 +7,37 @@ package com.winwin.dataapi.configuration;
  * internal services, effectively isolating it from the public internet.
  */
 
-import jakarta.servlet.*;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-public class InternalTokenFilter implements Filter {
-
-    @Value("${app.internal.token}")
-    private String validToken;
+public class InternalTokenFilter extends OncePerRequestFilter {
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
-            throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
 
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
+        String path = request.getServletPath();
 
-        String token = request.getHeader("X-Internal-Token");
+        if (path.startsWith("/api/transform")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
-        if (token == null || !token.equals(validToken)) {
+        String internalToken = request.getHeader("X-Internal-Token");
+
+        if (internalToken == null || !internalToken.equals("my-secret-internal-key")) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.setContentType("text/plain");
             response.getWriter().write("Forbidden: Invalid Internal Token");
             return;
         }
 
-        chain.doFilter(req, res);
+        filterChain.doFilter(request, response);
     }
 }
